@@ -4,6 +4,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import swaggerUi from "swagger-ui-express";
 import { swaggerSpec } from "./config/swagger";
+import { FRONTEND_URL } from "./config/env";
 
 import { errorMiddleware } from "./middlewares/error.middleware";
 
@@ -17,7 +18,12 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: FRONTEND_URL,
+    credentials: true,
+  }),
+);
 app.use(apiResponseMiddleware);
 
 // Swagger Docs

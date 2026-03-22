@@ -23,7 +23,7 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;
 
-  const { token } = await authService.login(username, password);
+  const { token, user } = await authService.login(username, password);
   const isProduction = process.env.NODE_ENV === "production";
 
   res.cookie("token", token, {
@@ -33,7 +33,11 @@ export const login = async (req: Request, res: Response) => {
     maxAge: 1000 * 60 * 60 * 8,
   });
 
-  res.success({ token: token }, "Inicio de sesión exitoso", StatusCodes.OK);
+  res.success(
+    { user: user, token: token },
+    "Inicio de sesión exitoso",
+    StatusCodes.OK,
+  );
 };
 
 export const logout = async (req: Request, res: Response) => {

@@ -107,7 +107,7 @@ authRouter.post("/register", register);
 /**
  * @swagger
  * /verify:
- *   post:
+ *   get:
  *     tags:
  *       - Auth
  *     summary: Verificar si la cookie JWT es valida
@@ -126,7 +126,7 @@ authRouter.post("/register", register);
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-authRouter.post("/verify", verifyToken);
+authRouter.get("/verify", verifyToken);
 
 /**
  * @swagger
