@@ -5,6 +5,7 @@ import type { IUser } from "../types/auth.interface";
 import { loginAction } from "../actions/login.action";
 import { getErrorMessage } from "@/utils/get-error-message.util";
 import { logoutAction } from "../actions/logout.action";
+import { checkAuthAction } from "../actions/check-auth-actions";
 
 type AuthStatus = "authenticated" | "not-authenticated";
 
@@ -15,6 +16,7 @@ type AuthState = {
   authStatus: AuthStatus;
 
   // Actions
+  verifyAuth: () => Promise<boolean>;
   login: (username: string, password: string) => Promise<Boolean>;
   logout: () => void;
 };
@@ -26,6 +28,22 @@ export const useAuthStore = create<AuthState>()((set) => ({
   authStatus: "not-authenticated",
 
   // Actions
+  verifyAuth: async () => {
+    try {
+      const data = await checkAuthAction();
+
+      set({
+        user: data,
+        authStatus: "authenticated",
+      });
+      return true;
+    } catch (error) {
+      set({ user: null, token: null, authStatus: "not-authenticated" });
+      toast.error(getErrorMessage(error));
+      return false;
+    }
+  },
+
   login: async (username: string, password: string): Promise<Boolean> => {
     try {
       const data = await loginAction(username, password);

@@ -1,5 +1,5 @@
 import { ThemeToggle } from "@/theme/ThemeToggle";
-import { Profile } from "@/components/Profile";
+import { Profile } from "@/components/custom/Profile";
 
 type AuthMode = "login" | "register";
 

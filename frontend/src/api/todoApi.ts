@@ -5,6 +5,4 @@ const api = axios.create({
   withCredentials: true,
 });
 
-//TODO: Add error handling and response types
-
 export { api };

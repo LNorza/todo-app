@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { LogOut, ChevronDown } from "lucide-react";
 import { useAuthStore } from "@/auth/store/auth.store";
+import { useNavigate } from "react-router";
 
 export const Profile = () => {
   const { user, logout } = useAuthStore();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -22,6 +24,7 @@ export const Profile = () => {
 
   const handleSignOut = () => {
     setOpen(false);
+    navigate("/auth/login");
     logout();
   };
 
@@ -34,12 +37,12 @@ export const Profile = () => {
       >
         {/* Avatar circle */}
         <div className="h-8 w-8 rounded-full bg-indigo-500 flex items-center justify-center text-white text-sm font-semibold overflow-hidden">
-          {user?.name.substring(0, 2).toUpperCase()}
+          {user?.name.substring(0, 2).toUpperCase() || "TS"}
         </div>
 
         {/* Name (hidden on mobile) */}
         <span className="hidden sm:block text-sm font-medium text-gray-700 dark:text-gray-200">
-          {user?.name}
+          {user?.name || "Test User"}
         </span>
 
         <ChevronDown
@@ -53,10 +56,10 @@ export const Profile = () => {
           {/* User info */}
           <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
             <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate">
-              {user?.name}
+              {user?.name || "Test User"}
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-              {user?.email}
+              {user?.email || "test@example.com"}
             </p>
           </div>
 

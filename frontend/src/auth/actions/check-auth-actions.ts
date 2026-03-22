@@ -1,14 +1,16 @@
 import { api } from "@/api/todoApi";
-import { useAuthStore } from "../store/auth.store";
 import { getErrorMessage } from "@/utils/get-error-message.util";
+import type { IUser } from "../types/auth.interface";
+
+type CheckAuthResponse = {
+  valid: boolean;
+  user: IUser;
+};
 
 export const checkAuthAction = async () => {
-  const { token } = useAuthStore();
-
-  if (!token) throw Error("No se encontró token de autenticación");
-
   try {
-    await api.post("/verify");
+    const { data } = await api.get<CheckAuthResponse>("/verify");
+    return data.user;
   } catch (error) {
     throw Error(getErrorMessage(error));
   }

@@ -5,6 +5,10 @@ import { LoginPage } from "./auth/pages/login/LoginPage";
 import { RegisterPage } from "./auth/pages/register/RegisterPage";
 import { TodoLayout } from "./todo/layouts/TodoLayout";
 import { TodosPage } from "./todo/pages/todos/TodosPage";
+import {
+  AuthenticatedRoutes,
+  UnauthenticatedRoutes,
+} from "./components/routes/ProtectedRoutes";
 
 const AuthLayout = lazy(() => import("./auth/layouts/AuthLayout"));
 
@@ -12,7 +16,11 @@ export const AppRouter = createBrowserRouter([
   // Main Routes
   {
     path: "/",
-    element: <TodoLayout />,
+    element: (
+      <AuthenticatedRoutes>
+        <TodoLayout />
+      </AuthenticatedRoutes>
+    ),
     children: [
       {
         index: true,
@@ -24,7 +32,11 @@ export const AppRouter = createBrowserRouter([
   // Auth Routes
   {
     path: "/auth",
-    element: <AuthLayout />,
+    element: (
+      <UnauthenticatedRoutes>
+        <AuthLayout />
+      </UnauthenticatedRoutes>
+    ),
     children: [
       {
         index: true,
