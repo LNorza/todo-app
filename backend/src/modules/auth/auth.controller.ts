@@ -52,13 +52,13 @@ export const logout = async (req: Request, res: Response) => {
 };
 
 export const verifyToken = async (req: Request, res: Response) => {
-  const token = req.cookies["token"];
+  const authToken = req.cookies["token"];
 
-  const payload = authService.verifyTokenService(token);
+  const { user } = await authService.verifyTokenService(authToken);
 
   res.status(200).json({
     valid: true,
-    user: payload,
+    user: user,
   });
 };
 

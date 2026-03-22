@@ -111,16 +111,24 @@ authRouter.post("/register", register);
  *     tags:
  *       - Auth
  *     summary: Verificar si la cookie JWT es valida
- *     description: Si usas Swagger UI, primero puedes hacer login y copiar el campo `token` de la respuesta para pegarlo en `Authorize`.
+ *     description: Valida el token y retorna el usuario completo asociado junto al JWT. Si usas Swagger UI, primero puedes hacer login y copiar el campo `token` de la respuesta para pegarlo en `Authorize`.
+ *     security:
+ *       - cookieAuth: []
  *     responses:
  *       200:
- *         description: Token valido
+ *         description: Token valido y usuario autenticado
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/VerifyTokenResponse'
  *       401:
  *         description: Token ausente o invalido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ErrorResponse'
+ *       404:
+ *         description: Usuario asociado al token no encontrado
  *         content:
  *           application/json:
  *             schema:
