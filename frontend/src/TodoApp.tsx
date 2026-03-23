@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "sonner";
+
 import { Loading } from "./components/custom/Loading";
 import { useAuthStore } from "./auth/store/auth.store";
 
@@ -15,7 +16,7 @@ const queryClient = new QueryClient();
 
 const CheckAuthProvider = ({ children }: { children: React.ReactNode }) => {
   const { verifyAuth } = useAuthStore();
-  const { data, isLoading } = useQuery({
+  const { isLoading } = useQuery({
     queryKey: ["auth"],
     queryFn: verifyAuth,
     retry: false,
@@ -31,7 +32,7 @@ export const TodoApp = () => {
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
-        <Toaster />
+        <Toaster position="top-right" />
         <CheckAuthProvider>
           <RouterProvider router={AppRouter} />
         </CheckAuthProvider>
