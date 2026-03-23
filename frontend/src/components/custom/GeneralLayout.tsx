@@ -1,8 +1,8 @@
 import { Outlet } from "react-router";
-import { CustomHeader } from "../components/Header";
+import { CustomHeader } from "./Header";
 import { Card, CardContent } from "@/components/ui/card";
 
-export const TodoLayout = () => {
+export const GeneralLayout = () => {
   return (
     <section className="min-h-screen bg-background text-foreground transition-colors">
       <CustomHeader />
