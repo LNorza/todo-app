@@ -18,7 +18,7 @@ Este proyecto es una aplicación de gestión de tareas (Todo App) compuesta por 
   - Swagger para documentación de la API
 - **Ubicación:** `backend/`
 - **Scripts principales:**
-  - `npm run dev`: Inicia el servidor en modo desarrollo con recarga automática.
+  - `npm run start:dev`: Inicia el servidor en modo desarrollo con recarga automática.
 - **Configuración:**
   - Variables de entorno en `.env`
   - Configuración de base de datos en `src/config/db.ts`
@@ -51,6 +51,7 @@ Este proyecto es una aplicación de gestión de tareas (Todo App) compuesta por 
    - Frontend: `cd frontend && npm install`
 3. **Configurar variables de entorno**
    - Backend: crear archivo `.env` en `backend/` según ejemplo
+   - Frontend: crear archivo `.env` en `frontend/` según ejemplo
 4. **Ejecutar ambos servidores**
-   - Backend: `npm run dev` (por defecto en puerto 4000)
+   - Backend: `npm run start:dev` (por defecto en puerto 4000)
    - Frontend: `npm run dev` (por defecto en puerto 3000)
