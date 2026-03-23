@@ -1,7 +1,7 @@
 import { api } from "@/api/todoApi";
 import type { IAuthResponse } from "../types/auth.Response";
 import { getErrorMessage } from "@/utils/get-error-message.util";
-import type { ApiResponse } from "@/utils/api.interface";
+import type { ApiResponse } from "@/api/types/api.interface";
 
 export const loginAction = async (
   username: string,

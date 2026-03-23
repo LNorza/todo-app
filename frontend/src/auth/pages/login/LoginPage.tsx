@@ -1,6 +1,6 @@
-import { LockKeyhole, LogIn } from "lucide-react";
+import { ArrowRight, LockKeyhole, LogIn } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import { useAuthStore } from "@/auth/store/auth.store";
 import { Button } from "@/components/ui/button";
@@ -88,12 +88,15 @@ export const LoginPage = () => {
                 >
                   Contraseña
                 </label>
-                <button
+                {/* TODO: Agregar funcionalidad de recuperación de contraseña
+                    al mandar correos para verficar identidad y permitir cambiar contraseña
+                */}
+                {/* <button
                   type="button"
                   className="text-xs text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Olvidé mi contraseña
-                </button>
+                </button> */}
               </div>
 
               <Input
@@ -114,6 +117,17 @@ export const LoginPage = () => {
               <LogIn className="size-4" />
               Iniciar sesión
             </Button>
+
+            <p className="text-center text-sm text-muted-foreground">
+              ¿Aún no tienes cuenta?{" "}
+              <Link
+                to="/auth/register"
+                className="inline-flex items-center gap-1 text-foreground transition-colors hover:text-primary"
+              >
+                Regístrate
+                <ArrowRight className="size-4" />
+              </Link>
+            </p>
           </form>
         </CardContent>
       </Card>

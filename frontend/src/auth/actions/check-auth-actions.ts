@@ -1,6 +1,6 @@
 import { api } from "@/api/todoApi";
+import type { IUser } from "@/user/types/user.interface";
 import { getErrorMessage } from "@/utils/get-error-message.util";
-import type { IUser } from "../types/auth.interface";
 
 type CheckAuthResponse = {
   valid: boolean;
@@ -12,6 +12,8 @@ export const checkAuthAction = async () => {
     const { data } = await api.get<CheckAuthResponse>("/verify");
     return data.user;
   } catch (error) {
+    console.error(error);
+
     throw Error(getErrorMessage(error));
   }
 };

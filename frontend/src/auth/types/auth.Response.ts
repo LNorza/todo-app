@@ -1,4 +1,4 @@
-import type { IUser } from "./auth.interface";
+import type { IUser } from "@/user/types/user.interface";
 
 export interface IAuthResponse {
   user: IUser;
