@@ -1,12 +1,16 @@
 import { Button } from "@/components/ui/button";
 import type { FilterMode } from "@/todo/types/todos.interface";
-import { useState } from "react";
 
-export const TodoFilter = () => {
-  const [filter, setFilter] = useState<FilterMode>("all");
+interface Props {
+  filter: FilterMode;
+  setFilter: (filter: FilterMode) => void;
+}
+
+export const TodoFilter = ({ filter, setFilter }: Props) => {
+  // const [filter, setFilter] = useState<FilterMode>("all");
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 justify-center">
       {(
         [
           ["all", "Todas"],

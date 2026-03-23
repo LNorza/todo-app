@@ -1,7 +1,8 @@
-interface ITodoResponse {
-  _id: string;
-  userId: string;
-  title: string;
-  description: string;
-  completed: boolean;
+import type { ITodo } from "./todos.interface";
+
+export interface ITodoResponse {
+  todos: ITodo[];
+}
+export interface ITodoResponseSingle {
+  todo: ITodo;
 }

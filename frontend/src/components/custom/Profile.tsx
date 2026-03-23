@@ -30,17 +30,14 @@ export const Profile = () => {
 
   return (
     <section className="relative" ref={dropdownRef}>
-      {/* Avatar button */}
       <button
         onClick={() => setOpen((prev) => !prev)}
         className="flex items-center gap-2 rounded-full pl-1 pr-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       >
-        {/* Avatar circle */}
         <div className="h-8 w-8 rounded-full bg-indigo-500 flex items-center justify-center text-white text-sm font-semibold overflow-hidden">
           {user?.name.substring(0, 2).toUpperCase() || "TS"}
         </div>
 
-        {/* Name (hidden on mobile) */}
         <span className="hidden sm:block text-sm font-medium text-gray-700 dark:text-gray-200">
           {user?.name || "Test User"}
         </span>
@@ -50,10 +47,8 @@ export const Profile = () => {
         />
       </button>
 
-      {/* Dropdown */}
       {open && (
         <div className="absolute right-0 mt-2 w-56 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg py-1 z-50">
-          {/* User info */}
           <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
             <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 truncate">
               {user?.name || "Test User"}
@@ -63,7 +58,6 @@ export const Profile = () => {
             </p>
           </div>
 
-          {/* Sign out */}
           <button
             onClick={handleSignOut}
             className="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"

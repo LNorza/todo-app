@@ -1,13 +1,13 @@
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import type { Todo } from "@/todo/types/todos.interface";
+import type { ITodo } from "@/todo/types/todos.interface";
 import { CheckCheck, CircleDashed, ListTodo } from "lucide-react";
 
 interface Props {
-  todos: Todo[];
+  todos: ITodo[];
 }
 
 export const TodoStats = ({ todos }: Props) => {
-  const pendingCount = todos.filter((t) => !t.done).length;
+  const pendingCount = todos.filter((t) => !t.completed).length;
   const completedCount = todos.length - pendingCount;
 
   const stats = [

@@ -1,7 +1,11 @@
 import { api } from "@/api/todoApi";
+import type { ApiResponse } from "@/utils/api.interface";
+import type { ITodoResponse } from "../types/todos.response";
 
-export const getAllTodosActions = async () => {
-  const response = await api.get("/todos");
+export const getTodosActions = async () => {
+  const {
+    data: { data },
+  } = await api.get<ApiResponse<ITodoResponse>>("/todos");
 
-  return response.data;
+  return data.todos;
 };
