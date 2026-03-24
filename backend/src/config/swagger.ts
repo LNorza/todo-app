@@ -123,13 +123,7 @@ const options: Options = {
           properties: {
             valid: { type: "boolean", example: true },
             user: {
-              type: "object",
-              properties: {
-                userId: { type: "string", example: "67d9f3d24d7f9fd0b3771234" },
-                username: { type: "string", example: "luisp" },
-                iat: { type: "number", example: 1710000000 },
-                exp: { type: "number", example: 1710028800 },
-              },
+              $ref: "#/components/schemas/User",
             },
           },
         },

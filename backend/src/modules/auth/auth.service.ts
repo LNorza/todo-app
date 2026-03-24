@@ -60,12 +60,19 @@ export const login = async (username: string, password: string) => {
   return { token, user };
 };
 
-export const verifyTokenService = (token?: string) => {
+export const verifyTokenService = async (token?: string) => {
   if (!token) {
     throw new HttpError("Token no proporcionado", StatusCodes.UNAUTHORIZED);
   }
 
-  return verifyTokenJWT(token);
+  const decodedToken = verifyTokenJWT(token);
+  const user = await User.findById(decodedToken.userId).select("-password");
+
+  if (!user) {
+    throw new HttpError("Usuario no encontrado", StatusCodes.NOT_FOUND);
+  }
+
+  return { user };
 };
 
 export const updatePasswordService = async (

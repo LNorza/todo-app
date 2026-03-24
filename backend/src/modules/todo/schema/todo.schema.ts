@@ -13,7 +13,16 @@ const userSchema = new Schema<ITodo>(
     description: { type: String, required: true },
     completed: { type: Boolean, default: false },
   },
-  { timestamps: { createdAt: "created_at" } },
+  {
+    timestamps: { createdAt: "created_at" },
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform: (_, ret) => {
+        delete ret._id;
+      },
+    },
+  },
 );
 
 export const Todo = model<ITodo>("Todo", userSchema);
