@@ -55,3 +55,26 @@ Este proyecto es una aplicación de gestión de tareas (Todo App) compuesta por 
 4. **Ejecutar ambos servidores**
    - Backend: `npm run start:dev` (por defecto en puerto 4000)
    - Frontend: `npm run dev` (por defecto en puerto 3000)
+
+## Docker Compose
+
+Puedes levantar toda la aplicación desde la raíz del proyecto.
+
+1. Crea `backend/.env` a partir de `backend/.env.template`
+2. Configura al menos:
+   - `MONGODB_URI`
+   - `JWT_SECRET`
+   - `JWT_EXPIRES_IN`
+   - `REFRESH_TOKEN_SECRET`
+   - `REFRESH_TOKEN_EXPIRES_IN`
+3. Ejecuta:
+   - `docker compose up --build`
+
+La configuración Docker usa un único `Dockerfile` con dos targets:
+- `backend`
+- `frontend`
+
+Servicios disponibles:
+- Frontend: `http://localhost:3000`
+- Backend: `http://localhost:4000`
+- Swagger: `http://localhost:4000/docs`
