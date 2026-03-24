@@ -25,7 +25,7 @@ type AuthState = {
     username: string,
     password: string,
   ) => Promise<Boolean>;
-  logout: () => void;
+  logout: () => Promise<void>;
 };
 
 export const useAuthStore = create<AuthState>()((set) => ({
@@ -90,7 +90,10 @@ export const useAuthStore = create<AuthState>()((set) => ({
   },
 
   logout: async () => {
-    await logoutAction();
-    set({ user: null, token: null, authStatus: "not-authenticated" });
+    try {
+      await logoutAction();
+    } finally {
+      set({ user: null, token: null, authStatus: "not-authenticated" });
+    }
   },
 }));

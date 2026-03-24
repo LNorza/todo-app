@@ -23,10 +23,10 @@ export const Profile = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
     setOpen(false);
+    await logout();
     navigate("/auth/login");
-    logout();
   };
 
   const handleOpenProfile = () => {
