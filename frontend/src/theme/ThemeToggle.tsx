@@ -12,9 +12,7 @@ export const ThemeToggle = () => {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      aria-label={
-        isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
-      }
+      aria-label={isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
       title={isDarkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
     >
       {isDarkMode ? <Sun /> : <Moon />}
