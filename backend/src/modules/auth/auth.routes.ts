@@ -67,7 +67,7 @@ authRouter.post("/login", login);
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-authRouter.post("/logout", authMiddleware, logout);
+authRouter.post("/logout", logout);
 
 /**
  * @swagger
