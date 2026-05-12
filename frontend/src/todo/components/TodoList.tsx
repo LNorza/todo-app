@@ -23,7 +23,7 @@ export const TodoList = ({ todos, filter, onRemove, onToggle }: Props) => {
         todos.map((todo) => (
           <div
             key={todo.id}
-            className={`flex items-center gap-3 rounded-xl border bg-card px-4 py-3 transition-all hover:shadow-sm ${
+            className={`flex items-center gap-3 rounded-xl border bg-card px-4 py-3 transition-all hover:shadow-sm  hover:bg-card-secondary ${
               todo.completed ? "border-border/50 opacity-80" : "border-border"
             }`}
           >
